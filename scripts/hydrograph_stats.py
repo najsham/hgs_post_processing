@@ -25,14 +25,6 @@ def rmse(obs, sim):
     return np.sqrt(np.nanmean((sim-obs)**2))
 
 
-def integrate_over_days(df, field, start, end, subset=None):
-    # df must have datetime index
-    y = df[start:end].dropna(subset=subset)[field].values.flatten()
-    x = df[start:end].dropna(subset=subset).index.array
-    x = (x - x[0]).days
-    return np.trapz(y, x=x)
-
-
 obs_start_date = ""
 sim_start_date = ""
 
